@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import Guest from './Guest'
+// import Guest from './Guest'
 
 export default class GuestView extends Component {
     state = {
@@ -52,13 +52,14 @@ export default class GuestView extends Component {
     }
 
     render() {
-        const guestComponent = this.state.guestList.map((guest, index) => {
-            return <Guest
-                firstName={guest.firstName}
-                lastName={guest.lastName}
-                message={guest.message}
-                guestId={guest._id}
-                key={index} />
+        const guestComponent = this.state.guestList.map((guest) => {
+            return <Link to={`/guestBook/${guest._id}`} key={guest._id}>  
+                        <div>
+                            <h2>{guest.firstName}</h2>
+                            <h2>{guest.lastName}</h2>
+                            <p>{guest.message}</p>
+                        </div>
+                    </Link>
         })
         return (
             <div className='guest-container'>

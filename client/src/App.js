@@ -10,7 +10,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={GuestView}/>
-          <Route exact path="/:id" component={Guest}/>
+          <Route exact path="/guestBook/:id" component={Guest}/>
         </Switch>
       </Router>
     </div>
