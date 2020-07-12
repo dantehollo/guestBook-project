@@ -64,46 +64,58 @@ export default class GuestView extends Component {
 
     render() {
         const guestComponent = this.state.guestList.map((guest) => {
-            return <Link to={`/guestBook/${guest._id}`} key={guest._id}>  
-                        <div>
-                            <h2>{guest.firstName}</h2>
-                            <h2>{guest.lastName}</h2>
+            return <section className="entry" key={guest._id}>
+                        <div className="name">  
+                            <Link to={`/guestBook/${guest._id}`}>
+                                <h2>{guest.firstName}</h2>
+                                <h2>{guest.lastName}</h2>
+                            </Link>
+                        </div>
+                        <div className="message">  
                             <p>{guest.message}</p>
                         </div>
-                    </Link>
+                    </section>
         })
         return (
             <div className='guest-container'>
-                <form id='new-guest-form' onSubmit={this.handleSubmit}>
-                    <input
-                        className='input-field'
-                        type='string'
-                        name='newGuestFirstName'
-                        placeholder='First Name'
-                        required='required'
-                        onChange={this.onNewGuestChange}
-                        value={this.state.newGuest.newGuestFirstName}/>
-                    <input
-                        className='input-field'
-                        type='string'
-                        name='newGuestLastName'
-                        placeholder='Last Name'
-                        required='required'
-                        onChange={this.onNewGuestChange}
-                        value={this.state.newGuest.newGuestLastName}/>
-                    <input
-                        className='input-field'
-                        type='string'
-                        name='newGuestMessage'
-                        placeholder='Message'
-                        required='required'
-                        onChange={this.onNewGuestChange}
-                        value={this.state.newGuest.newGuestMessage}/>
-                    <button
-                        onClick={() => this.createNewGuest()}>
-                        Enter
-                    </button>
-                </form>
+                <div className="hero">
+                    <h1 className="welcome">
+                        Welcome to the <br/> <span className="title">GuestBook</span>
+                    </h1>
+                    <p className="welcome-message">Leave a message, or scroll down to see who else is here</p>
+                </div>
+                <div className='create-new-guest-form'>
+                    <form id='new-guest-form' onSubmit={this.handleSubmit}>
+                        <input
+                            className='input-field'
+                            type='string'
+                            name='newGuestFirstName'
+                            placeholder='First Name'
+                            required='required'
+                            onChange={this.onNewGuestChange}
+                            value={this.state.newGuest.newGuestFirstName}/>
+                        <input
+                            className='input-field'
+                            type='string'
+                            name='newGuestLastName'
+                            placeholder='Last Name'
+                            required='required'
+                            onChange={this.onNewGuestChange}
+                            value={this.state.newGuest.newGuestLastName}/>
+                        <textarea
+                            className='input-field'
+                            type='string'
+                            name='newGuestMessage'
+                            placeholder='Message'
+                            required='required'
+                            onChange={this.onNewGuestChange}
+                            value={this.state.newGuest.newGuestMessage}/>
+                        <button
+                            onClick={() => this.createNewGuest()}>
+                            Enter
+                        </button>
+                    </form>
+                </div>
                 <div>
                     { guestComponent }
                 </div>
