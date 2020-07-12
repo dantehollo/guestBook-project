@@ -20,7 +20,7 @@ export default class GuestView extends Component {
     refreshGuestList = () => {
         axios.get('api/guestBook')
         .then((response) => {
-            console.log(response)
+            // console.log(response)
             this.setState({guestList: response.data})
         })
     }
@@ -45,6 +45,17 @@ export default class GuestView extends Component {
         this.setState({newGuest: newGuest})
     }
 
+    handleSubmit = (event) => {
+        // console.log("handleSubmit fired")
+        this.setState({newGuest: {
+                            newGuestFirstName: '',
+                            newGuestLastName: '',
+                            newGuestMessage: ''}
+                    }
+                )
+        event.preventDefault()
+    } 
+
     clearForm = () => {
         const guestForm = document.getElementById('test-form')
         console.log(guestForm)
@@ -63,7 +74,7 @@ export default class GuestView extends Component {
         })
         return (
             <div className='guest-container'>
-                <form id='new-guest-form'>
+                <form id='new-guest-form' onSubmit={this.handleSubmit}>
                     <input
                         className='input-field'
                         type='string'
@@ -88,20 +99,11 @@ export default class GuestView extends Component {
                         required='required'
                         onChange={this.onNewGuestChange}
                         value={this.state.newGuest.newGuestMessage}/>
+                    <button
+                        onClick={() => this.createNewGuest()}>
+                        Enter
+                    </button>
                 </form>
-                <button
-                    onClick={() => this.createNewGuest()}>
-                    Enter
-                </button>
-                <form id='test-form'>
-                    <input
-                        type='text'
-                        name='test'/>
-                </form>
-                <button
-                    onClick={() => this.clearForm()}>
-                    Clear Form
-                </button>
                 <div>
                     { guestComponent }
                 </div>
