@@ -82,40 +82,41 @@ export default class GuestView extends Component {
                     <h1 className="welcome">
                         Welcome to the <br/> <span className="title">GuestBook</span>
                     </h1>
-                    <p className="welcome-message">Leave a message, or scroll down to see who else is here</p>
+                    <p className="welcome-message">A small simulation of an early web forum. Leave a message, or scroll down to see who else is here</p>
+                    <div className='create-new-guest-form'>
+                        <form id='new-guest-form' onSubmit={this.handleSubmit}>
+                            <input
+                                className='input-field'
+                                type='string'
+                                name='newGuestFirstName'
+                                placeholder='First Name'
+                                required='required'
+                                onChange={this.onNewGuestChange}
+                                value={this.state.newGuest.newGuestFirstName}/>
+                            <input
+                                className='input-field'
+                                type='string'
+                                name='newGuestLastName'
+                                placeholder='Last Name'
+                                required='required'
+                                onChange={this.onNewGuestChange}
+                                value={this.state.newGuest.newGuestLastName}/>
+                            <textarea
+                                className='textarea-field'
+                                type='string'
+                                name='newGuestMessage'
+                                placeholder='Message'
+                                required='required'
+                                onChange={this.onNewGuestChange}
+                                value={this.state.newGuest.newGuestMessage}/>
+                            <button
+                                onClick={() => this.createNewGuest()}>
+                                Enter
+                            </button>
+                        </form>
+                    </div>
                 </div>
-                <div className='create-new-guest-form'>
-                    <form id='new-guest-form' onSubmit={this.handleSubmit}>
-                        <input
-                            className='input-field'
-                            type='string'
-                            name='newGuestFirstName'
-                            placeholder='First Name'
-                            required='required'
-                            onChange={this.onNewGuestChange}
-                            value={this.state.newGuest.newGuestFirstName}/>
-                        <input
-                            className='input-field'
-                            type='string'
-                            name='newGuestLastName'
-                            placeholder='Last Name'
-                            required='required'
-                            onChange={this.onNewGuestChange}
-                            value={this.state.newGuest.newGuestLastName}/>
-                        <textarea
-                            className='input-field'
-                            type='string'
-                            name='newGuestMessage'
-                            placeholder='Message'
-                            required='required'
-                            onChange={this.onNewGuestChange}
-                            value={this.state.newGuest.newGuestMessage}/>
-                        <button
-                            onClick={() => this.createNewGuest()}>
-                            Enter
-                        </button>
-                    </form>
-                </div>
+                
                 <div>
                     { guestComponent }
                 </div>

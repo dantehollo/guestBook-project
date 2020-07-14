@@ -53,18 +53,54 @@ blockquote, q {
 } */
 
 /* Hero Section */
-
 .hero {
+  height: 600px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   text-align: center;
-  height: 60%;
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.pexels.com/photos/60893/tunnel-underground-underpass-lighting-60893.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.welcome {
+  margin: 30px 0 60px 0;
+  font-size: 1.5em;
+}
+
+.title {
+  font-size: 4em;
+}
+
+/* Create New Guest Form */
+.create-new-guest-form {
+  text-align: center;
+  width: 40%;
+  margin: 40px auto;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.input-field {
+  margin: 25px 25px 25px 0;
+  color: rgba(255, 255, 255, 0.781);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.textarea-field {
+  width: 100%;
+  /* height:  */
+}
+
+#new-guest-form {
+  /* display: flex;
+  flex-direction: column;
+  width: 200px; */
 }
 
 
-
-/* Create New Guest Form */
 /* Entries */
 .entry {
   display: flex;
