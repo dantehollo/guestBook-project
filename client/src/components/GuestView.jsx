@@ -65,10 +65,9 @@ export default class GuestView extends Component {
     render() {
         const guestComponent = this.state.guestList.map((guest) => {
             return <section className="entry" key={guest._id}>
-                        <div className="name">  
+                        <div className="name-box">  
                             <Link to={`/guestBook/${guest._id}`}>
-                                <h2>{guest.firstName}</h2>
-                                <h2>{guest.lastName}</h2>
+                                <h2 className='name'>{guest.firstName} <br/> {guest.lastName}</h2>
                             </Link>
                         </div>
                         <div className="message">
@@ -79,14 +78,12 @@ export default class GuestView extends Component {
         return (
             <div className='guest-container'>
                 <section className="hero">
-                    <div className='header'>
-                        <h1 className="welcome">
-                            Welcome to the <br/> <span className="title">GuestBook</span>
-                        </h1>
-                        <p className="tagline">Hey there! Thanks for stopping by. Feel free to scroll through 
+                    <h1 className="welcome">
+                        Welcome to the <br/> <span className="title">GuestBook</span>
+                    </h1>
+                    <p className="tagline">Hey there! Thanks for stopping by. Feel free to scroll through 
                         the other messages and leave a note below.
-                        </p>
-                    </div>
+                    </p>
                     <div className='create-new-guest-form'>
                         <form id='new-guest-form' onSubmit={this.handleSubmit}>
                             <input
@@ -120,8 +117,7 @@ export default class GuestView extends Component {
                             </button>
                         </form>
                     </div>
-                </section>
-                
+                </section>   
                 <div>
                     { guestComponent }
                 </div>

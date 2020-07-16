@@ -60,9 +60,9 @@ export default class Guest extends Component {
     render() {
         const {firstName, lastName, message} = this.state
         return (
-                <div>
+                <div className='single-guest-container'>
                     <h2 className='guest-names'>{firstName}<br/>{lastName}</h2>
-                    <p className='message'>{message}</p>
+                    <p className='guest-message'>{message}</p>
                     <form id='update-guest-form' onSubmit={this.handleSubmit}>
                         <input
                             className='input-field'
@@ -89,11 +89,14 @@ export default class Guest extends Component {
                             onChange={this.handleGuestChange}
                             value={this.state.message}/>
                         <button
+                            className='button'
                             type='submit'
                             onClick={this.updateGuest}>
                             Update
                         </button>
-                        <button onClick={this.onDeleteGuestClick}>
+                        <button 
+                            className='button'
+                            onClick={this.onDeleteGuestClick}>
                             Delete
                         </button>
                     </form>
