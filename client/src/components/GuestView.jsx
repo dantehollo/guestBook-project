@@ -71,18 +71,22 @@ export default class GuestView extends Component {
                                 <h2>{guest.lastName}</h2>
                             </Link>
                         </div>
-                        <div className="message">  
+                        <div className="message">
                             <p>{guest.message}</p>
                         </div>
                     </section>
         })
         return (
             <div className='guest-container'>
-                <div className="hero">
-                    <h1 className="welcome">
-                        Welcome to the <br/> <span className="title">GuestBook</span>
-                    </h1>
-                    <p className="welcome-message">A small simulation of an early web forum. Leave a message, or scroll down to see who else is here</p>
+                <section className="hero">
+                    <div className='header'>
+                        <h1 className="welcome">
+                            Welcome to the <br/> <span className="title">GuestBook</span>
+                        </h1>
+                        <p className="tagline">Hey there! Thanks for stopping by. Feel free to scroll through 
+                        the other messages and leave a note below.
+                        </p>
+                    </div>
                     <div className='create-new-guest-form'>
                         <form id='new-guest-form' onSubmit={this.handleSubmit}>
                             <input
@@ -110,12 +114,13 @@ export default class GuestView extends Component {
                                 onChange={this.onNewGuestChange}
                                 value={this.state.newGuest.newGuestMessage}/>
                             <button
+                                className='button'
                                 onClick={() => this.createNewGuest()}>
-                                Enter
+                                Submit
                             </button>
                         </form>
                     </div>
-                </div>
+                </section>
                 
                 <div>
                     { guestComponent }
