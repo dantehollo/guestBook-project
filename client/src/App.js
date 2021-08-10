@@ -1,19 +1,26 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import GuestView from './components/GuestView'
-import Guest from './components/Guest'
+import UserView from './components/UserView'
+import User from './components/User'
+import PostView from './components/PostView'
+import Post from './components/Post'
+import CommentView from './components/CommentView'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Switch>
-          <Route exact path="/" component={GuestView}/>
-          <Route exact path="/guestBook/:id" component={Guest}/>
+          <Route exact path="/comment/:id" component={Comment}/>
+          <Route exact path="/user/:id" component={User}/>
+          <Route exact path="/user" component={UserView}/>
+          <Route exact path="/comment" component={CommentView}/>
+          <Route exact path="/:id" component={Post}/>
+          <Route exact path="/" component={PostView}/>
         </Switch>
-      </Router>
-    </div>
+      </div>  
+    </Router>
   );
 }
 
