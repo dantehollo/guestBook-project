@@ -1,4 +1,4 @@
-<h2>Welcome to Scrawls on the Walls</h>
+<h2>Welcome to Scrawls on the Walls</h2>
 
 "GuestBook" is being remade into a new, better forum style website. Below you will find a full list of current features, as well as upcoming plans and what is currently be worked on.
 
