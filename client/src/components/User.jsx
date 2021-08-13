@@ -103,6 +103,11 @@ export default class User extends Component {
                             Posts
                         </h1>
                     </Link>
+                    <Link to={`/comment`}>
+                        <h1>
+                            Comments
+                        </h1>
+                    </Link>
                 </div>
         )    
     }

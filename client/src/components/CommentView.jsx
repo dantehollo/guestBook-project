@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-export default class Comment extends Component {
+export default class CommentView extends Component {
     state = {
         commentList: [],
         newComment: {
@@ -34,7 +34,7 @@ export default class Comment extends Component {
 
         axios.post('api/comment', newComment)
         .then(() => {
-            this.refreshComponent()
+            this.refreshComment()
         })
     }
 
@@ -64,13 +64,14 @@ export default class Comment extends Component {
             return <section className="entry" key={comment._id}>
                 <div className="name-box">  
                     <Link to={`/comment/${comment._id}`}>
-                        <h2 className='name'>{comment.userName}</h2>
+                        <h2 className='name'>Associated User: {comment.userName}</h2>
                     </Link>
                 </div>
                 <div className="message">
-                    <p>{comment.commentText}</p>
+                    <p>Comment Text: {comment.commentText}</p>
+                    <p>Associated Post: {comment.postId}</p>
+                    <p>Comment ID: {comment._id}</p>
                     <p>{comment.timeStamp}</p>
-                    <p>{comment.postId}</p>
                 </div>
             </section>
         })
@@ -79,7 +80,7 @@ export default class Comment extends Component {
             <div className='guest-container'>
                 <section className="hero">
                     <h1 className="welcome">
-                        Welcome to the <br/> <span className="title">TAGZ</span>
+                        Welcome to the <br/> <span className="title">Scrawls on the Wall</span>
                     </h1>
                     <p className="tagline">Hey there! Thanks for stopping by. Feel free to scroll through 
                         the other messages and leave a note below.
@@ -90,7 +91,7 @@ export default class Comment extends Component {
                                 className='input-field'
                                 type='string'
                                 name='newCommentText'
-                                placeholder='username'
+                                placeholder="What's your opinion?"
                                 required='required'
                                 onChange={this.onNewCommentChange}
                                 value={this.state.newComment.newCommentText}/>
@@ -98,15 +99,15 @@ export default class Comment extends Component {
                                 className='input-field'
                                 type='string'
                                 name='newUserName'
-                                placeholder='user who wrote this'
+                                placeholder='Who wrote this'
                                 required='required'
                                 onChange={this.onNewCommentChange}
                                 value={this.state.newComment.newUserName}/>
                             <input
                                 className='input-field'
                                 type='string'
-                                name='postId'
-                                placeholder='linked post'
+                                name='newPostId'
+                                placeholder='Associated post'
                                 required='required'
                                 onChange={this.onNewCommentChange}
                                 value={this.state.newComment.newPostId}/>

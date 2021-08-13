@@ -1,5 +1,6 @@
 
 const express = require('express')
+const bcrypt = require('bcrypt')
 
 const userApi = require('../models/user.js')
 
@@ -22,7 +23,9 @@ userRouter.get('/:id', (req, res) => {
 })
 
 // create
-userRouter.post('/', (req, res) => {
+userRouter.post('/', async (req, res) => {
+  const hashedPassword = await bcrypt.hash(req.body.passWord, 10)
+  req.body.passWord = hashedPassword
   userApi.createNewUser(req.body)
     .then((newUser) => {
       res.json(newUser)
@@ -43,6 +46,23 @@ userRouter.delete('/:id', (req, res) => {
     .then((deletedUser) => {
       res.json(deletedUser)
     })
+})
+
+// user authentication
+userRouter.get('/login', async (req, res) => {
+  const user = users.find(user => user.userName === req.body.userName)
+  if (user == null) {
+    return res.status(400).send('Cannont find user')
+  }
+  try {
+    if(await bcrypt.compare(req.body.passWord, user.passWord)){
+      res.send('Success')
+    } else {
+      res.send('Wrong Password or Username')
+    }
+  } catch {
+    res.status(500).send()
+  }
 })
 
 module.exports = {

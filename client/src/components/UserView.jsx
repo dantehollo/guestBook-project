@@ -75,7 +75,7 @@ export default class UserView extends Component {
             <div className='guest-container'>
                 <section className="hero">
                     <h1 className="welcome">
-                        Welcome to the <br/> <span className="title">TAGZ</span>
+                        Welcome to the <br/> <span className="title">SCRAWLS ON THE WALL</span>
                     </h1>
                     <p className="tagline">Hey there! Thanks for stopping by. Feel free to scroll through 
                         the other messages and leave a note below.

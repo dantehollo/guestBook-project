@@ -67,10 +67,10 @@ export default class Post extends Component {
         return (
             <div className='single-guest-container'>
                 <h2 className='guest-names'>{title}</h2>
-                <p className='guest-message'>{description}</p>
-                <p className='guest-message'>{originalPoster}</p>
+                <p className='guest-message'>Desc: {description}</p>
+                <p className='guest-message'>OP: {originalPoster}</p>
                 <p className='guest-message'>{timeStamp}</p>
-                <p className='guest-message'>{_id}</p>
+                <p className='guest-message'>ID: {_id}</p>
                 <form id='update-guest-form' onSubmit={this.handleSubmit}>
                     <input
                         className='input-field'
@@ -84,7 +84,7 @@ export default class Post extends Component {
                         className='input-field'
                         type='string'
                         name='descrpition'
-                        placeholder='Change Password'
+                        placeholder='Change Desc'
                         required='required'
                         onChange={this.handlePostChange}
                         value={this.state.description}/>
@@ -116,6 +116,11 @@ export default class Post extends Component {
                 <Link to={`/`}>
                     <h1>
                         Posts
+                    </h1>
+                </Link>
+                <Link to={`/comment`}>
+                    <h1>
+                        Jotuns
                     </h1>
                 </Link>
             </div>

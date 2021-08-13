@@ -5,6 +5,7 @@ import User from './components/User'
 import PostView from './components/PostView'
 import Post from './components/Post'
 import CommentView from './components/CommentView'
+import Comment from './components/Comment'
 import './App.css';
 
 function App() {

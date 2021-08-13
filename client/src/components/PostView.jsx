@@ -114,7 +114,7 @@ export default class PostView extends Component {
                             value={this.state.newPost.newPostOP}/>
                         <button
                             className='button'
-                            onClick={() => this.createNewUser()}>
+                            onClick={() => this.createNewPost()}>
                             Submit
                         </button>
                     </form>

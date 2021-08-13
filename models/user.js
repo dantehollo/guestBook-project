@@ -35,19 +35,6 @@ const deleteUser = (id) => {
     return UserCollection.deleteOne({_id: id})
 }
 
-// async pushNewPost = (req, res) => {
-//     const post = req.body
-//     const {userId} = req.params
-//     const newPost = await Post.createNewPost(post)
-//     const newUser = await Post.findByIdAndUpdate(
-//         userId,
-//         {
-//             $push: {postsMade: newPost._id}
-//         },
-//         {new: true, useFindAndModify: false}
-//     )
-// }
-
 module.exports = {
     getAllUsers,
     getOneUser,
