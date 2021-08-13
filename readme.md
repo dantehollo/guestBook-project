@@ -18,5 +18,6 @@ User Login<br/>
 Mobile Compatability<br/>
 GIPHY Integration<br/>
 Search Algorithms<br/>
-
-Hosted Through Heroku
+<br/>
+Current version of the site can be found <a href='https://msc-guestbook.herokuapp.com/'>here</a><br/>
+Hosted through Heroku
