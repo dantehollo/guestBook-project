@@ -1,31 +1,22 @@
-# mern-template-project
+<h2>Welcome to Scrawls on the Walls</h>
 
-# Setup A New Project From This Template
+"GuestBook" is being remade into a new, better forum style website. Below you will find a full list of current features, as well as upcoming plans and what is currently be worked on.
 
-If you are starting a new project do the following:
+<h3>Features:</h3>
+Three Related Databases<br/>
+MVC structure<br/>
+RESTful API's<br/>
+All CRUD Operations<br/>
 
-1. copy/download this directory to where you new project is located and rename
-   it to the name of your project.
-1. change your directory (`cd`) into the copied project template
-1. `npm install`
-1. `npm run dev`
-1. Open a new browser window and navigate to the URL http://localhost:3000/
-    here you should see `hello world` displayed after page load
-    updates should show up here automatically
-1. see the `client/src` `readme.md` file for more information on the react project
+<h3>Under Development:</h3>
+User Authentication<br/>
 
-# Setup A New Project Without This Template
+<h3>Upcoming:</h3>
+Better Styling<br/>
+User Avatars<br/>
+User Login<br/>
+Mobile Compatability<br/>
+GIPHY Integration<br/>
+Search Algorithms<br/>
 
-If you want to start a project without using this template directory do the
-following:
-
-
-1. `mkdir <project-name>`
-1. `cd <project-name>`
-1. `echo "# <project-name>" > readme.md`
-1. `git init`
-1. `git add readme.md `
-1. `git commit -m "init repo with readme.md"`
-1. `npm init`
-1. `mkdir models views controllers`
-1. `touch ./server.js`
+Hosted Through Heroku
