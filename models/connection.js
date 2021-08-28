@@ -1,7 +1,10 @@
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 const mongoose = require('mongoose');
 
-const connectionString = process.env.MONGODB_URI || "mongodb://localhost/db-guestBook";
+const connectionString = process.env.MDB_CONNECT || "mongodb://localhost/db-guestBook";
 
 mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => {

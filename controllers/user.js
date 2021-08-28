@@ -1,6 +1,6 @@
-
 const express = require('express')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 const userApi = require('../models/user.js')
 
@@ -24,12 +24,55 @@ userRouter.get('/:id', (req, res) => {
 
 // create
 userRouter.post('/', async (req, res) => {
-  const hashedPassword = await bcrypt.hash(req.body.passWord, 10)
-  req.body.passWord = hashedPassword
-  userApi.createNewUser(req.body)
-    .then((newUser) => {
-      res.json(newUser)
-    })
+  try {
+    //hash the password
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    req.body.password = hashedPassword
+    let newUser = userApi.createNewUser(req.body)
+
+    //validation
+    const { email, password, userName, passwordVerify} = req.body
+
+    // all fields not filled
+    if (!email || !password || !userName || !passwordVerify) {
+      return res
+      .status(400)
+      .json({ errorMessage: "Please enter all fields" })
+    }
+
+    // password too short
+    if (password.length < 8) {
+      return res.status(400).json({
+        errorMessage: "Passward needs to be at least eight characters",
+      })
+    } 
+
+    // account already uses that email
+    const existingUser = await userApi.getByEmail({ email })
+
+    if (existingUser) {
+      return res.status(400).send({
+        errorMessage: "An account with this email already exists"
+      })
+    }
+    
+    //sign in token
+    const token = jwt.sign({
+      user: newUser._id
+    },
+    process.env.JWT_SECRET
+    )
+    
+    // send token as cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none"
+    }).json(newUser)
+
+  } catch (err) {
+      res.status(500).send("catch")
+  }
 })
 
 // update
@@ -49,8 +92,7 @@ userRouter.delete('/:id', (req, res) => {
 })
 
 // user authentication
-userRouter.get('/login', async (req, res) => {
-  const user = users.find(user => user.userName === req.body.userName)
+userRouter.post('/login', async (req, res) => {
   if (user == null) {
     return res.status(400).send('Cannont find user')
   }
@@ -61,9 +103,18 @@ userRouter.get('/login', async (req, res) => {
       res.send('Wrong Password or Username')
     }
   } catch {
-    res.status(500).send()
+    res.status(500).send('triggered the catch')
   }
 })
+
+let userListFromAPI = userApi.getAllUsers()
+let userListFromRouter = userRouter.get('/', (req, res) => {
+  userApi.getAllUsers()
+    .then((allUsers) => {
+      res.json(allUsers)
+  })
+})
+// console.log(userListFromRouter)
 
 module.exports = {
   userRouter

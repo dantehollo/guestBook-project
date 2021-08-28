@@ -6,6 +6,7 @@ import PostView from './components/PostView'
 import Post from './components/Post'
 import CommentView from './components/CommentView'
 import Comment from './components/Comment'
+import Login from './components/Login'
 import './App.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
+          <Route exact path="/user/login" component={Login}/>
           <Route exact path="/comment/:id" component={Comment}/>
           <Route exact path="/user/:id" component={User}/>
           <Route exact path="/user" component={UserView}/>

@@ -21,7 +21,6 @@ export default class PostView extends Component {
         axios.get('api/post')
         .then((response) => {
             this.setState({postList: response.data})
-            console.log(response.data)
         })
     }
 
@@ -80,7 +79,7 @@ export default class PostView extends Component {
             <div className='guest-container'>
                 <section className="hero">
                     <h1 className="welcome">
-                        Welcome to the <br/> <span className="title">TAGZ</span>
+                        Welcome to the <br/> <span className="title">SCRAWLS ON THE WALLS</span>
                     </h1>
                     <p className="tagline">Hey there! Thanks for stopping by. Feel free to scroll through 
                         the other messages and leave a note below.
@@ -126,6 +125,11 @@ export default class PostView extends Component {
                     <Link to={`/comment`}>
                         <h1>
                             Comments
+                        </h1>
+                    </Link>
+                    <Link to={`/user/login`}>
+                        <h1>
+                            Login
                         </h1>
                     </Link>
                 </div>
